@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Re-issued</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Fixed HUD -->
+  <header class="hud" id="hud">
+    <a href="/" class="hud-logo">re-issued</a>
+    <nav class="hud-nav">
+      <a href="#shop" class="hud-link">Shop Now</a>
+      <span class="hud-label">Scroll</span>
+      <button type="button" class="hud-sound" id="soundToggle" aria-label="Toggle sound">Sound On</button>
+    </nav>
+    <div class="hud-music" id="hudMusic">Music: Oscar Wieczorek X ADSL Camels</div>
+  </header>
+
+  <main>
+    <!-- Hero: scroll-scrubbed video -->
+    <section class="section section-hero" id="hero" data-section="hero">
+      <div class="hero-video-wrap">
+        <video class="hero-video" id="heroVideo" playsinline muted preload="auto" crossorigin="anonymous">
+          <source src="https://videos.pexels.com/video-files/3195394/3195394-sd_640_360_24fps.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+      <p class="hero-hint" id="spacebarHint">Hold Spacebar</p>
+    </section>
+
+    <!-- Marquee: Enter the archives -->
+    <section class="section section-marquee" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee-inner">
+          <span>ENTER THE ARCHIVES</span>
+          <span>ENTER THE ARCHIVES</span>
+          <span>ENTER THE ARCHIVES</span>
+          <span>ENTER THE ARCHIVES</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image stack 1 -->
+    <section class="section section-stack" id="stack1" data-section="stack1">
+      <div class="stack stack-1">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900" alt="" class="stack-img stack-img-1" />
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900" alt="" class="stack-img stack-img-2" />
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900" alt="" class="stack-img stack-img-3" />
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900" alt="" class="stack-img stack-img-4" />
+      </div>
+    </section>
+
+    <!-- Giant SVG text: NO CAPS -->
+    <section class="section section-svg-text" id="svgSection1" data-section="svg1">
+      <div class="svg-text-wrap">
+        <svg class="svg-text" viewBox="0 0 800 200" aria-hidden="true">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="svg-title">NO CAPS</text>
+        </svg>
+        <div class="svg-cards">
+          <div class="svg-card card-1"><img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600" alt="" /></div>
+          <div class="svg-card card-2"><img src="https://images.unsplash.com/photo-1558769132-cb1aea3c4f3d?w=600" alt="" /></div>
+          <div class="svg-card card-3"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image stack 2 -->
+    <section class="section section-stack" id="stack2" data-section="stack2">
+      <div class="stack stack-2">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900" alt="" class="stack-img stack-img-1" />
+        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=900" alt="" class="stack-img stack-img-2" />
+        <img src="https://images.unsplash.com/photo-1445205170230-053b83026450?w=900" alt="" class="stack-img stack-img-3" />
+      </div>
+    </section>
+
+    <!-- Copy block -->
+    <section class="section section-copy" id="copy" data-section="copy">
+      <div class="copy-inner">
+        <p class="copy-lead">Introducing a capsule collection of reissued pieces from the archive, re-released as part of the runway collection.</p>
+        <p class="copy-list">— '80s / '90s archival casual wear — revisited with rainbow check — the newest iteration of the iconic symbol — vintage trench coats, hand restored —</p>
+      </div>
+    </section>
+
+    <!-- Image stack 3 -->
+    <section class="section section-stack" id="stack3" data-section="stack3">
+      <div class="stack stack-3">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900" alt="" class="stack-img stack-img-1" />
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900" alt="" class="stack-img stack-img-2" />
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900" alt="" class="stack-img stack-img-3" />
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=900" alt="" class="stack-img stack-img-4" />
+      </div>
+    </section>
+
+    <!-- Giant SVG text: NO TRAINERS -->
+    <section class="section section-svg-text" id="svgSection2" data-section="svg2">
+      <div class="svg-text-wrap">
+        <svg class="svg-text" viewBox="0 0 800 200" aria-hidden="true">
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="svg-title">NO TRAINERS</text>
+        </svg>
+        <div class="svg-cards">
+          <div class="svg-card card-1"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600" alt="" /></div>
+          <div class="svg-card card-2"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600" alt="" /></div>
+          <div class="svg-card card-3"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600" alt="" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image stack 4 -->
+    <section class="section section-stack" id="stack4" data-section="stack4">
+      <div class="stack stack-4">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900" alt="" class="stack-img stack-img-1" />
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900" alt="" class="stack-img stack-img-2" />
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900" alt="" class="stack-img stack-img-3" />
+      </div>
+    </section>
+
+    <!-- Marquee: Shop Now -->
+    <section class="section section-marquee section-marquee-shop" id="shop" aria-hidden="true">
+      <div class="marquee marquee-shop">
+        <div class="marquee-inner">
+          <span>SHOP NOW</span>
+          <span>SHOP NOW</span>
+          <span>SHOP NOW</span>
+          <span>SHOP NOW</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
