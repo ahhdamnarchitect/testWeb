@@ -1,7 +1,8 @@
 /* ---- RE-ISSUED — Spec-based styles ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 100%; overflow-x: hidden; }
+html { overflow-x: hidden; }
 body {
+  width: 100%;
   background: rgb(39, 39, 39);
   color: rgb(250, 248, 252);
   font-family: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -297,7 +298,7 @@ body {
 /* ---- SECTION WRAP (NO CAPS / NO TRAINERS) ---- */
 .section-wrap {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 #no-caps-wrap { height: 900vh; background: rgb(80, 80, 80); }
 #no-trainers-wrap { height: 1000vh; background: rgb(10, 10, 10); }
@@ -435,6 +436,27 @@ body {
 @keyframes tickerScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* ---- STICKY SUPPORT (fixes sticky + overflow gotcha; matches reference site) ---- */
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .section-wrap {
+    height: auto;
+    overflow: visible;
+  }
+  .section-wrap .svg-wrap {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+  .section-wrap .image-stack {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    position: -webkit-sticky;
+    position: sticky;
+  }
+  #no-trainers-wrap {
+    height: auto;
+  }
 }
 
 /* ---- MOBILE HIDE (spec) ---- */
