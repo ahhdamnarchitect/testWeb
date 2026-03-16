@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120">
+  <style>
+    .archives-text { font-family: 'Bebas Neue', Arial Black, sans-serif; font-size: 100px; fill: rgb(250,248,252); letter-spacing: 0.15em; }
+  </style>
+  <text class="archives-text" x="0" y="90">ENTER THE ARCHIVES</text>
+  <text class="archives-text" x="580" y="90">ENTER THE ARCHIVES</text>
+  <text class="archives-text" x="1160" y="90">ENTER THE ARCHIVES</text>
+</svg>

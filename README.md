@@ -49,4 +49,8 @@ The `.nojekyll` file in the root tells GitHub Pages to serve the files as-is (no
 - **Horizontal marquees** (“ENTER THE ARCHIVES”, “SHOP NOW”)  
 - **Copy block** with fade-in on scroll  
 
-All images are loaded from the internet (Unsplash); no local image assets required.
+## Assets
+
+- **Local (in repo):** `assets/images/` — wordmark SVG, logo placeholders (brand + iD), `enter-the-archives.svg`, `shop-now-combo.svg`.
+- **Videos:** Intro and loop clips are sourced from Pexels (direct MP4 URLs).
+- **Images:** Stack photos are sourced from Unsplash (direct URLs).
