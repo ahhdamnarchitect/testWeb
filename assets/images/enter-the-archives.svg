@@ -1,8 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120">
-  <style>
-    .archives-text { font-family: 'Bebas Neue', Arial Black, sans-serif; font-size: 100px; fill: rgb(250,248,252); letter-spacing: 0.15em; }
-  </style>
-  <text class="archives-text" x="0" y="90">ENTER THE ARCHIVES</text>
-  <text class="archives-text" x="580" y="90">ENTER THE ARCHIVES</text>
-  <text class="archives-text" x="1160" y="90">ENTER THE ARCHIVES</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 200">
+    <defs>
+          <style>
+                  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap');
+                  text {
+                    font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+                    font-size: 180px;
+                    fill: white;
+                    letter-spacing: 8px;
+                  }
+          </style>
+    </defs>
+    <text x="0"    y="170">ENTER THE ARCHIVES</text>
+    <text x="1200" y="170">ENTER THE ARCHIVES</text>
 </svg>
