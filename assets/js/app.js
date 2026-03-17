@@ -42,7 +42,14 @@
 
   function init() {
     if (!introVideo || !progressEl || !progressWrapper) return;
-    document.body.style.overflow = 'hidden';
+    // Dev helper: append ?skipIntro=1 to bypass the intro gate.
+    // Default behavior matches the reference site (scroll locked until intro completes).
+    var skipIntro = false;
+    try {
+      skipIntro = new URLSearchParams(window.location.search).get('skipIntro') === '1';
+    } catch (e) {}
+
+    document.body.style.overflow = skipIntro ? '' : 'hidden';
     if (videoOverlay) gsap.set(videoOverlay, { y: '100%' });
     setupIntroVideo();
     setupSpacebar();
@@ -52,6 +59,13 @@
     setupShareLinks();
     setupNavigationLinks();
     animateMenuIn();
+
+    if (skipIntro) {
+      introVideoScrubComplete = true;
+      spacebarProgress = 1;
+      progressEl.style.width = '100%';
+      onIntroComplete();
+    }
   }
 
   function setupIntroVideo() {
@@ -209,14 +223,22 @@
     var noTrainersStrike = document.querySelector('#no-trainers-wrap .strike');
 
     if (noCapsWrap && noCapsStrike) {
-      var noCapsStrikeStart = noCapsWrap.offsetTop + winH * 5;
-      var noCapsProgress = Math.min(1, Math.max(0, (scrollY - noCapsStrikeStart) / winH));
+      var noCapsStrikeStart = noCapsWrap.offsetTop;
+      var noCapsStrikeEnd = noCapsWrap.offsetTop + winH * 1.8;
+      var noCapsProgress = Math.min(
+        1,
+        Math.max(0, (scrollY - noCapsStrikeStart) / (noCapsStrikeEnd - noCapsStrikeStart))
+      );
       gsap.set(noCapsStrike, { width: (noCapsProgress * 120) + '%' });
     }
 
     if (noTrainersWrap && noTrainersStrike) {
-      var noTrainersStrikeStart = noTrainersWrap.offsetTop + winH * 5;
-      var noTrainersProgress = Math.min(1, Math.max(0, (scrollY - noTrainersStrikeStart) / winH));
+      var noTrainersStrikeStart = noTrainersWrap.offsetTop;
+      var noTrainersStrikeEnd = noTrainersWrap.offsetTop + winH * 1.8;
+      var noTrainersProgress = Math.min(
+        1,
+        Math.max(0, (scrollY - noTrainersStrikeStart) / (noTrainersStrikeEnd - noTrainersStrikeStart))
+      );
       gsap.set(noTrainersStrike, { width: (noTrainersProgress * 120) + '%' });
     }
   }

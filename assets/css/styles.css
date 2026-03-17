@@ -330,6 +330,7 @@ body {
 .section-wrap .svg-wrap .image-wrap .strike {
   height: 2vmax;
   position: absolute;
+  z-index: 130;
   width: 120%;
   left: -10%;
   top: 59%;
