@@ -1,10 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" width="800" height="180">
-  <style>
-    .shop-outline { font-family: 'Bebas Neue', sans-serif; font-size: 72px; fill: none; stroke: rgb(250,248,252); stroke-width: 2; letter-spacing: 0.2em; }
-    .shop-filled { font-family: 'Bebas Neue', sans-serif; font-size: 72px; fill: rgb(250,248,252); letter-spacing: 0.2em; }
-  </style>
-  <text class="shop-outline" x="0" y="70">SHOP NOW</text>
-  <text class="shop-filled" x="0" y="155">SHOP NOW</text>
-  <text class="shop-outline" x="400" y="70">SHOP NOW</text>
-  <text class="shop-filled" x="400" y="155">SHOP NOW</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 240">
+    <defs>
+          <style>
+                  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap');
+                  .filled {
+                    font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+                    font-size: 200px;
+                    fill: white;
+                    letter-spacing: 6px;
+                  }
+                  .outlined {
+                    font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+                    font-size: 200px;
+                    fill: none;
+                    stroke: white;
+                    stroke-width: 2px;
+                    letter-spacing: 6px;
+                  }
+          </style>
+    </defs>
+    <text class="filled"   x="0"    y="195">SHOP NOW</text>
+    <text class="outlined" x="700"  y="195">SHOP NOW</text>
+    <text class="filled"   x="1350" y="195">SHOP NOW</text>
 </svg>
