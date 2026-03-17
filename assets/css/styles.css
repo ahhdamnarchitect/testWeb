@@ -204,9 +204,11 @@ body {
 .section-wrap .svg-wrap .image-wrap {
   margin: auto; position: relative; width: 70%;
 }
-#no-trainers-wrap .svg-wrap .image-wrap { width: 80%; }
+#no-trainers-wrap .svg-wrap .image-wrap { width: 85%; }
 .section-wrap .svg-wrap .image-wrap svg {
   max-width: 100%; display: block; margin: auto;
+  /* Allow letterforms to bleed slightly beyond container at small viewports */
+  overflow: visible;
 }
 .section-wrap .svg-wrap .image-wrap .svg-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -268,11 +270,25 @@ body {
 }
 #shop-now .type-band .type {
   display: block; height: 100%; min-height: 100px;
+  will-change: transform;
 }
-#shop-now .type-band .type.type-shop {
-  background: url('../images/shop-now-combo.svg') repeat-x left center;
+/* 
+  shop-now-combo.svg contains TWO "SHOP NOW" instances in one tile (viewBox 0 0 1790.5 384):
+    Left half  (~0–895):   outlined stroke text
+    Right half (~895–1790): filled white text
+  Row 1 background-position: 0% 0px  → starts at outlined "SHOP NOW"
+  Row 2 background-position: 50% 0px → starts at filled "SHOP NOW" (right half of tile)
+  JS scroll animation uses translateX to slide rows in opposite directions.
+*/
+#shop-now .type-band:nth-child(1) .type.type-shop {
+  background: url('../images/shop-now-combo.svg') repeat-x 0% center;
   background-size: auto 100%; width: 300%;
 }
+#shop-now .type-band:nth-child(2) .type.type-shop {
+  background: url('../images/shop-now-combo.svg') repeat-x 50% center;
+  background-size: auto 100%; width: 300%;
+}
+
 #shop-now .ticker {
   color: rgb(250, 248, 252); overflow: hidden;
   position: absolute; bottom: 15%; left: 0; width: 100%;
