@@ -1,6 +1,6 @@
 /**
  * RE-ISSUED — Spec-based application script
- * Uses GSAP 3 (replaces TweenMax 1.x from spec)
+ * Uses GSAP 3
  */
 (function () {
   'use strict';
@@ -43,7 +43,7 @@
   function init() {
     if (!introVideo || !progressEl || !progressWrapper) return;
 
-    /* Body overflow is NOT locked — scroll animations work independently from the start */
+    /* Body overflow is NOT locked — scroll animations work independently */
     document.body.style.overflow = '';
 
     if (videoOverlay) gsap.set(videoOverlay, { y: '100%' });
@@ -63,7 +63,6 @@
     introVideo.currentTime = 0;
     introVideo.muted = true;
     introVideo.load();
-    /* Autoplay as background (muted, so browser allows it) */
     introVideo.play().catch(function () {});
   }
 
@@ -71,7 +70,6 @@
   function setupSpacebar() {
     document.addEventListener('keydown', function (e) {
       if (e.keyCode === 32) {
-        /* Always prevent page scroll from spacebar */
         e.preventDefault();
         if (!spacebarHeld && !e.repeat) {
           spacebarHeld = true;
@@ -86,7 +84,6 @@
         e.preventDefault();
         spacebarHeld = false;
         stopSpacebarScrub();
-        /* Start draining the meter back down when key released */
         if (!introVideoScrubComplete) {
           startSpacebarDown();
         }
@@ -127,13 +124,9 @@
   }
 
   function stopSpacebarScrub() {
-    if (spacebarInterval) {
-      clearInterval(spacebarInterval);
-      spacebarInterval = null;
-    }
+    if (spacebarInterval) { clearInterval(spacebarInterval); spacebarInterval = null; }
   }
 
-  /* Drain meter back to 0 when spacebar released */
   function startSpacebarDown() {
     if (spacebarDownInterval) return;
     spacebarDownInterval = setInterval(function () {
@@ -141,17 +134,12 @@
       spacebarProgress = Math.max(spacebarProgress - SCRUB_DOWN_SPEED, 0);
       introVideo.currentTime = spacebarProgress * (introVideo.duration || 0);
       progressEl.style.width = (spacebarProgress * 100) + '%';
-      if (spacebarProgress <= 0) {
-        stopSpacebarDown();
-      }
+      if (spacebarProgress <= 0) { stopSpacebarDown(); }
     }, SCRUB_INTERVAL_MS);
   }
 
   function stopSpacebarDown() {
-    if (spacebarDownInterval) {
-      clearInterval(spacebarDownInterval);
-      spacebarDownInterval = null;
-    }
+    if (spacebarDownInterval) { clearInterval(spacebarDownInterval); spacebarDownInterval = null; }
   }
 
   function onIntroComplete() {
@@ -176,11 +164,10 @@
   function onScroll() {
     scrollY = window.pageYOffset || document.documentElement.scrollTop;
     var winH = window.innerHeight;
-    var docH = document.documentElement.scrollHeight;
 
     if (enterSection) handleEnterArchivesSection(scrollY, winH);
     handleStrikeAnimations(scrollY, winH);
-    handleShopNowSection(scrollY, winH, docH);
+    handleShopNowSection(scrollY, winH);
     updateBodyBackground(scrollY, winH);
   }
 
@@ -217,25 +204,23 @@
   }
 
   /* ---- SHOP NOW ---- */
-  function handleShopNowSection(scrollY, winH, docH) {
+  /*
+   * The shop-now-combo.svg tile (viewBox 0 0 1790.5 384) contains:
+   *   Left  half (~0–895):  outlined "SHOP NOW" (stroke only)
+   *   Right half (~895–1790): filled "SHOP NOW"
+   * CSS sets background-position: 0% for row 1 (shows outlined text)
+   *              background-position: 50% for row 2 (shows filled text)
+   * We only need to manage the bottom menu state here; the bg-position
+   * is handled purely in CSS, matching the original site's approach.
+   */
+  function handleShopNowSection(scrollY, winH) {
     if (!shopNowSection || !menuBottom) return;
     var shopNowTop = shopNowSection.getBoundingClientRect().top + scrollY;
-
     if (scrollY + winH >= shopNowTop + winH * 0.5) {
       menuBottom.classList.add('bottom');
     } else {
       menuBottom.classList.remove('bottom');
     }
-
-    var types = shopNowSection.querySelectorAll('.type-band .type');
-    if (types.length < 2) return;
-    var sectionStart = shopNowTop - winH;
-    var sectionEnd   = shopNowTop + winH;
-    var rawProgress  = (scrollY - sectionStart) / (sectionEnd - sectionStart);
-    var progress     = Math.max(0, Math.min(1, rawProgress));
-    var maxTranslate = winH * 2.66;
-    gsap.set(types[0], { x: -progress * maxTranslate });
-    gsap.set(types[1], { x:  progress * maxTranslate });
   }
 
   /* ---- BACKGROUND COLOUR ---- */
@@ -267,10 +252,7 @@
       if (soundIcon) soundIcon.style.opacity = soundOn ? '1' : '0.4';
       var bars = soundIcon ? soundIcon.querySelectorAll('.bar') : [];
       if (bars.length) {
-        gsap.to(bars, {
-          duration: 0.3, scaleY: soundOn ? 1 : 0.1,
-          stagger: soundOn ? 0.1 : 0.05, ease: 'power2.out'
-        });
+        gsap.to(bars, { duration: 0.3, scaleY: soundOn ? 1 : 0.1, stagger: soundOn ? 0.1 : 0.05, ease: 'power2.out' });
       }
     }
     toggleSound.addEventListener('click', function () {
