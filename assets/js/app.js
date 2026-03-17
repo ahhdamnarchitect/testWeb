@@ -136,6 +136,7 @@
     if (enterSection) handleEnterArchivesSection(scrollY, winH);
     handleNoCapsSection(scrollY, winH);
     handleNoTrainersSection(scrollY, winH);
+    handleStrikeAnimations(scrollY, winH);
     handleShopNowSection(scrollY, winH, docH);
     updateBodyBackground(scrollY, winH);
   }
@@ -161,10 +162,10 @@
     if (scrollY < wrapTop - winH || scrollY > wrapBottom) return;
 
     var stackSections = noCapsWrap.querySelectorAll('.image-stack');
-    var sectionHeight = wrapHeight / (stackSections.length + 1);
+    var sectionHeight = winH;
 
     stackSections.forEach(function (stack, i) {
-      var stackStart = wrapTop + (sectionHeight * i);
+      var stackStart = wrapTop + winH * (i + 1);
       var localScroll = scrollY - stackStart;
       var localProgress = localScroll / sectionHeight;
 
@@ -188,10 +189,10 @@
     if (scrollY < wrapTop - winH || scrollY > wrapBottom) return;
 
     var stackSections = noTrainersWrap.querySelectorAll('.image-stack');
-    var sectionHeight = wrapHeight / (stackSections.length + 1);
+    var sectionHeight = winH;
 
     stackSections.forEach(function (stack, i) {
-      var stackStart = wrapTop + (sectionHeight * i);
+      var stackStart = wrapTop + winH * (i + 1);
       var localProgress = (scrollY - stackStart) / sectionHeight;
 
       var translateY;
@@ -201,6 +202,23 @@
 
       gsap.set(stack, { y: translateY + '%' });
     });
+  }
+
+  function handleStrikeAnimations(scrollY, winH) {
+    var noCapsStrike = document.querySelector('#no-caps-wrap .strike');
+    var noTrainersStrike = document.querySelector('#no-trainers-wrap .strike');
+
+    if (noCapsWrap && noCapsStrike) {
+      var noCapsStrikeStart = noCapsWrap.offsetTop + winH * 5;
+      var noCapsProgress = Math.min(1, Math.max(0, (scrollY - noCapsStrikeStart) / winH));
+      gsap.set(noCapsStrike, { width: (noCapsProgress * 120) + '%' });
+    }
+
+    if (noTrainersWrap && noTrainersStrike) {
+      var noTrainersStrikeStart = noTrainersWrap.offsetTop + winH * 5;
+      var noTrainersProgress = Math.min(1, Math.max(0, (scrollY - noTrainersStrikeStart) / winH));
+      gsap.set(noTrainersStrike, { width: (noTrainersProgress * 120) + '%' });
+    }
   }
 
   function handleShopNowSection(scrollY, winH, docH) {

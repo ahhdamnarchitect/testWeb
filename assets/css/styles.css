@@ -336,6 +336,10 @@ body {
 }
 #no-caps-wrap .strike { background: rgb(10, 10, 10); }
 #no-trainers-wrap .strike { background: rgb(250, 248, 252); }
+#no-caps-wrap .strike,
+#no-trainers-wrap .strike {
+  width: 0%;
+}
 
 /* Image stack panels — fixed, translateY driven by scroll */
 .section-wrap .image-stack {

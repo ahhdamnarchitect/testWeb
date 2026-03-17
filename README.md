@@ -22,8 +22,16 @@ Then visit `http://localhost:8000`.
 
    ```bash
    git add .
-   git commit -m "Add Re-issued replica"
+   git commit -m "Your message"
    git push -u origin master
+   ```
+
+   **If you see `error: unknown option 'trailer'`** when running `git commit`, something on your system is wrapping Git and adding that option. Use the real Git executable directly:
+
+   ```powershell
+   & "C:\Program Files\Git\cmd\git.exe" add .
+   & "C:\Program Files\Git\cmd\git.exe" commit -m "Your message" --no-verify
+   & "C:\Program Files\Git\cmd\git.exe" push origin master
    ```
 
 2. **Turn on GitHub Pages**  
