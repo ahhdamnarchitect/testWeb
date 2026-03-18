@@ -266,29 +266,22 @@ body {
   display: flex; flex-direction: column;
 }
 #shop-now .type-band {
-  flex: 1; overflow: hidden; white-space: nowrap;
+  overflow: hidden; white-space: nowrap; position: relative; margin: 0.25rem 0;
 }
 #shop-now .type-band .type {
-  display: block; height: 100%; min-height: 100px;
+  height: 100%; min-height: 100px;
+  background-image: url('../images/shop-now-combo.svg');
+  background-repeat: repeat-x; background-size: auto 100%;
+  width: 300%; position: absolute;
   will-change: transform;
 }
-/* 
-  shop-now-combo.svg contains TWO "SHOP NOW" instances in one tile (viewBox 0 0 1790.5 384):
-    Left half  (~0–895):   outlined stroke text
-    Right half (~895–1790): filled white text
-  Row 1 background-position: 0% 0px  → starts at outlined "SHOP NOW"
-  Row 2 background-position: 50% 0px → starts at filled "SHOP NOW" (right half of tile)
-  JS scroll animation uses translateX to slide rows in opposite directions.
-*/
-/* Left band: outlined-only SVG tiles cleanly with no overlap */
-#shop-now .type-band.left .type {
-  background: url('../images/shop-now-outlined.svg') repeat-x left center;
-  background-size: auto 100%; width: 300%;
+/* Row 1: bg-position 20% matches original — shows outlined "SHOP NOW" phase */
+#shop-now .type-band:nth-child(1) .type {
+  background-position: 20% 0px; left: 0;
 }
-/* Right band: filled-only SVG tiles cleanly with no overlap */
-#shop-now .type-band.right .type {
-  background: url('../images/shop-now-filled.svg') repeat-x left center;
-  background-size: auto 100%; width: 300%;
+/* Row 2: bg-position 50% + left:-200% matches original — shows filled "SHOP NOW" phase */
+#shop-now .type-band:nth-child(2) .type {
+  background-position: 50% 0px; left: -200%;
 }
 
 #shop-now .ticker {
