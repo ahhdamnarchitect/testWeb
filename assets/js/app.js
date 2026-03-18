@@ -41,7 +41,7 @@
   var FILM_EMBED_URL    = '';
 
   function init() {
-    if (!introVideo || !progressEl || !progressWrapper) return;
+    runIntroLoader(); if (!introVideo || !progressEl || !progressWrapper) return;
 
     /* Body overflow is NOT locked — scroll animations work independently */
     document.body.style.overflow = '';
