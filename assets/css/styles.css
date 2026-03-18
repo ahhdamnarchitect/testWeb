@@ -280,13 +280,13 @@ body {
   Row 2 background-position: 50% 0px → starts at filled "SHOP NOW" (right half of tile)
   JS scroll animation uses translateX to slide rows in opposite directions.
 */
-/* Row 1: outlined "SHOP NOW" — offset 20% shows outlined portion of combo tile */
-#shop-now .type-band:nth-child(1) .type.type-shop {
+/* Left band: outlined text portion (background-position 20% matches original) */
+#shop-now .type-band.left .type {
   background: url('../images/shop-now-combo.svg') repeat-x 20% 0px;
   background-size: auto 100%; width: 300%;
 }
-/* Row 2: filled "SHOP NOW" — offset 50% shows filled portion of combo tile */
-#shop-now .type-band:nth-child(2) .type.type-shop {
+/* Right band: filled text portion (background-position 50% matches original) */
+#shop-now .type-band.right .type {
   background: url('../images/shop-now-combo.svg') repeat-x 50% 0px;
   background-size: auto 100%; width: 300%;
 }
