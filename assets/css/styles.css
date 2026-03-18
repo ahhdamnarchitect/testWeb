@@ -7,7 +7,7 @@ body {
   color: rgb(250, 248, 252);
   font-family: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
-}
+}h
 
 /* ---- FIXED HUD ---- */
 .logo-wrapper {
@@ -190,6 +190,8 @@ body {
   font-size: clamp(1rem, 4vw, 1.5rem); line-height: 1.4;
   letter-spacing: 0.02em; text-align: center; color: rgb(250, 248, 252);
   background: rgb(39, 39, 39); padding: 64px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 /* ---- SECTION WRAP (NO CAPS / NO TRAINERS) ---- */
@@ -267,6 +269,7 @@ body {
 }
 #shop-now .type-band {
   overflow: hidden; white-space: nowrap; position: relative; margin: 0.25rem 0;
+    height: 50%;
 }
 #shop-now .type-band .type {
   height: 100%; min-height: 100px;
