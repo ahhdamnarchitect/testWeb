@@ -348,6 +348,55 @@
     });
   }
 
+    /* ---- INTRO LOADER ---- */
+    function runIntroLoader() {
+          var loader = document.getElementById('intro-loader');
+          var logoWrapper = document.querySelector('.logo-wrapper');
+          if (!loader) return;
+
+          var letters = loader.querySelectorAll('.ltr');
+          var totalLetters = letters.length;
+          var letterDelay = 120; // ms per letter
+          var holdDuration = 400; // ms to hold all lit
+          var transitionDuration = 600; // ms for fade+shrink to logo
+
+          // Hide logo while loading
+          if (logoWrapper) logoWrapper.classList.add('intro-active');
+
+          // Light up letters one by one
+          var idx = 0;
+          function lightNext() {
+                  if (idx < totalLetters) {
+                            letters[idx].classList.add('lit');
+                            idx++;
+                            setTimeout(lightNext, letterDelay);
+                  } else {
+                            // All lit — hold then transition
+                            setTimeout(doTransition, holdDuration);
+                  }
+          }
+
+          function doTransition() {
+                  // Fade out loader
+                  gsap.to(loader, {
+                            duration: transitionDuration / 1000,
+                            opacity: 0,
+                            ease: 'power2.in',
+                            onComplete: function() {
+                                        loader.style.display = 'none';
+                                        // Show logo wrapper
+                                        if (logoWrapper) {
+                                                      logoWrapper.classList.remove('intro-active');
+                                                      logoWrapper.classList.add('intro-done');
+                                        }
+                            }
+                  });
+          }
+
+          // Start after a short initial pause
+          setTimeout(lightNext, 200);
+    }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
