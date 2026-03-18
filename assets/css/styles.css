@@ -280,14 +280,14 @@ body {
   Row 2 background-position: 50% 0px → starts at filled "SHOP NOW" (right half of tile)
   JS scroll animation uses translateX to slide rows in opposite directions.
 */
-/* Left band: outlined text portion (background-position 20% matches original) */
+/* Left band: outlined-only SVG tiles cleanly with no overlap */
 #shop-now .type-band.left .type {
-  background: url('../images/shop-now-combo.svg') repeat-x 20% 0px;
+  background: url('../images/shop-now-outlined.svg') repeat-x left center;
   background-size: auto 100%; width: 300%;
 }
-/* Right band: filled text portion (background-position 50% matches original) */
+/* Right band: filled-only SVG tiles cleanly with no overlap */
 #shop-now .type-band.right .type {
-  background: url('../images/shop-now-combo.svg') repeat-x 50% 0px;
+  background: url('../images/shop-now-filled.svg') repeat-x left center;
   background-size: auto 100%; width: 300%;
 }
 
