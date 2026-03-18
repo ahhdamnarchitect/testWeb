@@ -7,7 +7,7 @@ body {
   color: rgb(250, 248, 252);
   font-family: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
-}h
+}
 
 /* ---- FIXED HUD ---- */
 .logo-wrapper {
@@ -273,7 +273,7 @@ body {
 }
 #shop-now .type-band .type {
   height: 100%; min-height: 100px;
-  background-image: url('../images/shop-now-combo.svg');
+  background-image: url('../images/shop-now-outlined.svg');
   background-repeat: repeat-x; background-size: auto 100%;
   width: 300%; position: absolute;
   will-change: transform;
@@ -284,7 +284,7 @@ body {
 }
 /* Row 2: bg-position 50% + left:-200% matches original — shows filled "SHOP NOW" phase */
 #shop-now .type-band:nth-child(2) .type {
-  background-position: 50% 0px; left: -200%;
+  background-image: url('../images/shop-now-filled.svg'); background-position: 0 0; left: 0;
 }
 
 #shop-now .ticker {
