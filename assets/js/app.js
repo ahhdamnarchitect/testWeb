@@ -10,7 +10,7 @@
   var spacebarProgress = 0;
   var spacebarInterval = null;
   var spacebarDownInterval = null;
-  var soundOn = true;
+  var soundOn = false;
   var introVideoScrubComplete = false;
 
   var introVideo     = document.getElementById('intro-video');
@@ -276,7 +276,7 @@
       updateSound();
       try { localStorage.setItem('reissued-sound', soundOn ? '1' : '0'); } catch (e) {}
     });
-    try { soundOn = localStorage.getItem('reissued-sound') !== '0'; } catch (e) {}
+    try { soundOn = localStorage.getItem('reissued-sound') === '1'; } catch (e) {}
     updateSound();
   }
 
