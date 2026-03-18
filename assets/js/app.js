@@ -224,24 +224,20 @@
       menuBottom.classList.remove('bottom');
     }
 
-    // Scroll animation: slide left band left, right band right (matches original)
-    var leftBand = shopNowSection.querySelector('.type-band.left .type');
-    var rightBand = shopNowSection.querySelector('.type-band.right .type');
-    if (!leftBand || !rightBand) return;
+    // Scroll-driven animation: row1 slides left, row2 slides right (matches original)
+    var row1 = shopNowSection.querySelector('.type-band:nth-child(1) .type');
+    var row2 = shopNowSection.querySelector('.type-band:nth-child(2) .type');
+    if (!row1 || !row2) return;
 
-    // progress: 0 when shop-now enters viewport, 1 when it exits top
-    // Start: scrollY = shopNowTop - winH (section just visible at bottom)
-    // End:   scrollY = shopNowTop + winH (section scrolled past)
+    // progress: 0 when section enters viewport bottom, 1 when it exits viewport top
     var start = shopNowTop - winH;
-    var end = shopNowTop + winH;
+    var end   = shopNowTop + winH;
     var progress = (scrollY - start) / (end - start);
     progress = Math.max(0, Math.min(1, progress));
 
-    // Left slides from 0% to -50%, right slides from 0% to +50%
-    var leftX = -progress * 50;
-    var rightX = progress * 50;
-    gsap.set(leftBand, { x: leftX + '%' });
-    gsap.set(rightBand, { x: rightX + '%' });
+    // Row 1 slides left 0% → -50%; Row 2 slides right 0% → +50%
+    gsap.set(row1, { x: (-progress * 50) + '%' });
+    gsap.set(row2, { x: ( progress * 50) + '%' });
   }
   /* ---- BACKGROUND COLOUR ---- */
   function updateBodyBackground(scrollY, winH) {
