@@ -229,8 +229,12 @@
     var rightBand = shopNowSection.querySelector('.type-band.right .type');
     if (!leftBand || !rightBand) return;
 
-    // progress: 0 when shop-now top hits viewport bottom, 1 when it scrolls through
-    var progress = (scrollY + winH - shopNowTop) / (winH * 2);
+    // progress: 0 when shop-now enters viewport, 1 when it exits top
+    // Start: scrollY = shopNowTop - winH (section just visible at bottom)
+    // End:   scrollY = shopNowTop + winH (section scrolled past)
+    var start = shopNowTop - winH;
+    var end = shopNowTop + winH;
+    var progress = (scrollY - start) / (end - start);
     progress = Math.max(0, Math.min(1, progress));
 
     // Left slides from 0% to -50%, right slides from 0% to +50%
@@ -239,7 +243,6 @@
     gsap.set(leftBand, { x: leftX + '%' });
     gsap.set(rightBand, { x: rightX + '%' });
   }
-
   /* ---- BACKGROUND COLOUR ---- */
   function updateBodyBackground(scrollY, winH) {
     if (!noCapsWrap || !noTrainersWrap || !shopNowSection) return;
