@@ -216,11 +216,28 @@
   function handleShopNowSection(scrollY, winH) {
     if (!shopNowSection || !menuBottom) return;
     var shopNowTop = shopNowSection.getBoundingClientRect().top + scrollY;
+
+    // Menu bottom state toggle
     if (scrollY + winH >= shopNowTop + winH * 0.5) {
       menuBottom.classList.add('bottom');
     } else {
       menuBottom.classList.remove('bottom');
     }
+
+    // Scroll animation: slide left band left, right band right (matches original)
+    var leftBand = shopNowSection.querySelector('.type-band.left .type');
+    var rightBand = shopNowSection.querySelector('.type-band.right .type');
+    if (!leftBand || !rightBand) return;
+
+    // progress: 0 when shop-now top hits viewport bottom, 1 when it scrolls through
+    var progress = (scrollY + winH - shopNowTop) / (winH * 2);
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Left slides from 0% to -50%, right slides from 0% to +50%
+    var leftX = -progress * 50;
+    var rightX = progress * 50;
+    gsap.set(leftBand, { x: leftX + '%' });
+    gsap.set(rightBand, { x: rightX + '%' });
   }
 
   /* ---- BACKGROUND COLOUR ---- */
